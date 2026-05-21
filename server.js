@@ -58,6 +58,14 @@ app.use((req, res, next) => {
 app.all('/stubs/handler_api.php', async (req, res) => {
   // Merge query parameters and body parameters (supports both GET and POST)
   const params = { ...req.query, ...req.body };
+  
+  // Sanitize params: If multiple query params exist, Express creates an array. Flatten to first element string.
+  for (const key in params) {
+    if (Array.isArray(params[key])) {
+      params[key] = params[key][0];
+    }
+  }
+
   const { action, api_key } = params;
 
   if (!action) {
