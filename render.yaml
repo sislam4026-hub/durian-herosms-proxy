@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: durian-herosms-proxy
+    runtime: docker
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DEFAULT_DURIAN_NAME
+        value: Khalilredoy20
+      - key: DEFAULT_PID
+        value: "0257"
+      - key: DEFAULT_SERIAL
+        value: "2"
+      - key: DEFAULT_VIP
+        value: "null"
+      - key: DURIAN_API_BASE
+        value: https://api.durianrcs.com/out/ext_api
